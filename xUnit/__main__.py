@@ -2,10 +2,6 @@ class TestCase:
     def __init__(self, name):
         self.name = name
 
-    def run(self):
-        method = getattr(self, self.name)
-        method()
-
     def setUp(self):
         pass
 
@@ -21,17 +17,18 @@ class WasRun:
         TestCase.__init__(self, name)
 
     def setUp(self):
-        self.wasSetUp = 1
         self.wasRun = None
+        self.wasSetUp = 1
 
     def run(self):
         method = getattr(self, self.name)
         method()
 
     def testMethod(self):
-        self.wasRun = None
-        self.wasSetUp = 1
-        self.log = "setUp "
+        # self.setUp()
+        # self.wasSetUp = 1
+        # self.log = "setUp"
+        self.wasRun = 1
 
 
 class TestCaseTest(TestCase):
